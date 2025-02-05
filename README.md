@@ -4,12 +4,13 @@ Car heaven is a project of mine. Where you can buy and sell cars to your need. U
 
 
 ## Project Overview
-![Car heaven webpage](https://github.com/user-attachments/assets/cb533536-e684-46b5-a5c9-129081fed40c)
+![Car heaven webpage](https://github.com/user-attachments/assets/6304d911-9fd7-4d4a-abbc-05d3e216e880)
 ## Features
 - Animated Homepage
 - Option to view cars in grid or column layout
 - Backend data sorting for data and price query
 - Ability to add, delete and update cars
+
 - Serach Fuctionality
 - Firebase authentication
 
