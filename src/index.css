@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .logo {
+    @apply rounded-lg bg-green-700 px-2 py-1 text-lg font-bold text-white sm:text-xl md:text-2xl lg:text-3xl;
+  }
+  .grid-view {
+    @apply grid items-center gap-4 md:grid-cols-2 lg:grid-cols-3;
+  }
+  .list-view {
+    @apply flex flex-col gap-8;
+  }
+  .grid-view-card {
+    @apply card card-compact w-96 bg-base-100 shadow-xl;
+  }
+  .grid-view-img {
+    @apply h-[250px] w-full cursor-pointer transition-all duration-300 hover:scale-125;
+  }
+  .grid-view-location {
+    @apply w-fit rounded-lg bg-black/80 px-4 py-2 text-white;
+  }
+  .list-view-card {
+    @apply card card-side shadow-xl;
+  }
+  .list-view-img {
+    @apply h-[250px] max-w-[500px] cursor-pointer transition-all duration-300 hover:scale-125;
+  }
+  .list-view-location {
+    @apply flex w-fit items-center rounded-lg bg-black/80 px-4 text-white;
+  }
+  .heading {
+    @apply text-center text-3xl font-bold;
+  }
+}
