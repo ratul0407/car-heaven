@@ -9,7 +9,7 @@
     @apply rounded-lg bg-green-700 px-2 py-1 text-lg font-bold text-white sm:text-xl md:text-2xl lg:text-3xl;
   }
   .grid-view {
-    @apply grid items-center gap-4 md:grid-cols-2 lg:grid-cols-3;
+    @apply grid items-center gap-4 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 2xl:gap-16;
   }
   .list-view {
     @apply flex flex-col gap-8;
@@ -21,7 +21,7 @@
     @apply h-[250px] w-full cursor-pointer transition-all duration-300 hover:scale-125;
   }
   .grid-view-location {
-    @apply w-fit rounded-lg bg-black/80 px-4 py-2 text-white;
+    @apply flex w-fit items-center gap-2 rounded-lg bg-slate-300 px-4 py-2 text-black;
   }
   .list-view-card {
     @apply card card-side shadow-xl;
