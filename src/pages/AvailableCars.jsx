@@ -90,19 +90,30 @@ function AvailableCars() {
           </div>
         </div>
       </div>
-      {!gridView ? (
-        <div className="list-view">
-          {cars.map((car) => (
-            <ListCarCard key={car._id} car={car} />
-          ))}
+
+      {/* sidebar and products */}
+      <div className="flex w-full">
+        <div className="w-1/4">
+          <div className="bg-slate-300">
+            <h3>Filter Price</h3>
+            <input type="checkbox" />
+          </div>
         </div>
-      ) : (
-        <div className="grid-view">
-          {cars.map((car) => (
-            <GridCarCard key={car._id} car={car} />
-          ))}
-        </div>
-      )}
+
+        {!gridView ? (
+          <div className="list-view">
+            {cars.map((car) => (
+              <ListCarCard key={car._id} car={car} />
+            ))}
+          </div>
+        ) : (
+          <div className="grid-view">
+            {cars.map((car) => (
+              <GridCarCard key={car._id} car={car} />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

@@ -23,7 +23,7 @@ function GridCarCard({ car }) {
         </figure>
         <div className="card-body">
           <h2 className="card-title">{model}</h2>
-          <p>{description.substring(0, 80)}.....</p>
+          <p>{description.substring(0, 70)}.....</p>
           <p className="grid-view-location">
             <IoLocation /> {carLocation}
           </p>
