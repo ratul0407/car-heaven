@@ -1,9 +1,19 @@
 import { Link } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import { FaSun } from "react-icons/fa";
+import { GoMoon, GoSun } from "react-icons/go";
+import { useEffect, useState } from "react";
 
 function Navbar() {
   const { user, logOut } = useAuth();
+  const [theme, setTheme] = useState("light");
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
+  };
 
+  useEffect(() => {
+    document.querySelector("html").setAttribute("data-theme", theme);
+  }, [theme]);
   const links = (
     <>
       <li>
@@ -60,7 +70,11 @@ function Navbar() {
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
-      <div className="navbar-end">
+      <div className="navbar-end gap-4">
+        <button onClick={toggleTheme} className="btn rounded-full">
+          {theme === "light" ? <GoMoon /> : <GoSun />}
+        </button>
+
         {user?.email ? (
           <>
             <img
