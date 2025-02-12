@@ -16,6 +16,7 @@ function AvailableCars() {
   const [search, setSearch] = useState("");
   const [searchText, setSearchText] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
   console.log(gridView);
 
   useEffect(() => {
@@ -37,11 +38,15 @@ function AvailableCars() {
   console.log(menuOpen);
   useEffect(() => {
     const fetchAllCars = async () => {
+      setLoading(true);
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/all-cars?search=${search}&sortBy=${sortBy}&order=${order}`,
       );
 
       setCars(data);
+      if (data) {
+        setLoading(false);
+      }
     };
 
     fetchAllCars();
@@ -91,8 +96,6 @@ function AvailableCars() {
           </div> */}
         </div>
       </div>
-
-      {/* sidebar and products */}
       <div className="relative flex w-full gap-8 lg:items-start">
         <div
           ref={sidebarRef}
@@ -199,8 +202,11 @@ function AvailableCars() {
             </div>
           </div>
         </div>
-
-        {!gridView ? (
+        {loading ? (
+          <div className="flex min-h-[50vh] w-full items-center justify-center">
+            <span className="loading loading-spinner loading-lg"></span>
+          </div>
+        ) : !gridView ? (
           <div className="list-view">
             {cars.map((car) => (
               <ListCarCard key={car._id} car={car} />

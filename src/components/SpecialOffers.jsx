@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const SpecialOffers = () => {
   const [offers, setOffers] = useState([]);
@@ -24,13 +25,14 @@ const SpecialOffers = () => {
             >
               <h3 className="mb-2 text-2xl font-semibold">{offer.title}</h3>
               <p className="mb-4 text-gray-600">{offer.description}</p>
-              <motion.button
+              <Link
+                to="/available-cars"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.95 }}
                 className="btn btn-neutral"
               >
                 {offer.buttonText}
-              </motion.button>
+              </Link>
             </motion.div>
           ))}
         </div>

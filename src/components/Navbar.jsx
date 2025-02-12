@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { FaSun } from "react-icons/fa";
 import { GoMoon, GoSun } from "react-icons/go";
@@ -17,25 +17,25 @@ function Navbar() {
   const links = (
     <>
       <li>
-        <Link to="/">Home</Link>
+        <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <Link to="/available-cars">Available Cars</Link>
+        <NavLink to="/available-cars">Available Cars</NavLink>
       </li>
       {user?.email && (
         <>
           {" "}
           <li>
-            <Link to="/add-cars">Add Cars</Link>
+            <NavLink to="/add-cars">Add Cars</NavLink>
           </li>
           <li>
-            <Link to="/my-cars">My Cars</Link>
+            <NavLink to="/my-cars">My Cars</NavLink>
           </li>
           <li>
-            <Link to="/my-bookings">My Bookings</Link>
+            <NavLink to="/my-bookings">My Bookings</NavLink>
           </li>
           <li>
-            <Link to="/manage-cars">Manage Cars</Link>
+            <NavLink to="/manage-cars">Manage Cars</NavLink>
           </li>{" "}
         </>
       )}
@@ -73,7 +73,7 @@ function Navbar() {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{links}</ul>
+        <ul className="menu menu-horizontal gap-4 px-1">{links}</ul>
       </div>
       <div className="navbar-end gap-4">
         <button onClick={toggleTheme} className="btn rounded-full">
