@@ -6,7 +6,7 @@
 
 @layer utilities {
   .logo {
-    @apply rounded-lg bg-green-700 px-2 py-1 text-lg font-bold text-white sm:text-xl md:text-2xl lg:text-3xl;
+    @apply rounded-lg bg-blue-500 px-2 py-1 text-lg font-bold text-white sm:text-xl md:text-2xl lg:text-3xl;
   }
   .grid-view {
     @apply grid items-center gap-4 md:grid-cols-2 lg:w-3/4 lg:grid-cols-2 2xl:grid-cols-3 2xl:gap-16;
@@ -35,4 +35,7 @@
   .heading {
     @apply text-center text-3xl font-bold;
   }
+}
+ul li a.active {
+  background-color: blue;
 }

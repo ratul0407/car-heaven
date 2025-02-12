@@ -1,4 +1,3 @@
-import { MdRocket } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
 import { FaCar, FaCheckCircle, FaDollarSign, FaHeadset } from "react-icons/fa";
@@ -129,6 +128,9 @@ function Home() {
         while={{ scale: 1.05 }}
         className="mx-auto max-w-xl space-y-4"
       >
+        <div>
+          <h3 className="heading">Faq section</h3>
+        </div>
         <div className="collapse collapse-plus bg-base-200">
           <input type="radio" name="my-accordion-3" defaultChecked />
           <div className="collapse-title text-xl font-medium">

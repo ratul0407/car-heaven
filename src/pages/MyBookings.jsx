@@ -68,14 +68,14 @@ function MyBookings() {
           <div className="overflow-x-auto">
             <table className="table">
               <thead>
-                <tr className="text-center font-bold text-white">
-                  <th className="bg-red-400">Car Image</th>
-                  <th className="bg-violet-400">Car Model</th>
-                  <th className="bg-green-500">Booking Date</th>
-                  <th className="bg-blue-400">Total Cost</th>
-                  <th className="bg-zinc-400">Booking Status</th>
-                  <th className="bg-red-500">Cancel</th>
-                  <th className="bg-orange-400">modify</th>
+                <tr className="text-center font-bold">
+                  <th>Car Image</th>
+                  <th>Car Model</th>
+                  <th>Booking Date</th>
+                  <th>Total Cost</th>
+                  <th>Booking Status</th>
+                  <th>Cancel</th>
+                  <th>modify</th>
                 </tr>
               </thead>
               <tbody>

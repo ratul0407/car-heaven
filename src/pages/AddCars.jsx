@@ -127,7 +127,7 @@ function AddCars() {
         />
         {/* Submit Button */}
         <div className="form-control pt-4 sm:col-span-2">
-          <button className="btn btn-success text-white">Submit</button>
+          <button className="btn bg-blue-500 text-white">Submit</button>
         </div>
       </form>
     </div>

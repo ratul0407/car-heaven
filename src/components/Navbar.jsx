@@ -1,6 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
-import { FaSun } from "react-icons/fa";
 import { GoMoon, GoSun } from "react-icons/go";
 import { useEffect, useState } from "react";
 
@@ -14,10 +13,13 @@ function Navbar() {
   useEffect(() => {
     document.querySelector("html").setAttribute("data-theme", theme);
   }, [theme]);
+
   const links = (
     <>
       <li>
-        <NavLink to="/">Home</NavLink>
+        <NavLink className="links" to="/">
+          Home
+        </NavLink>
       </li>
       <li>
         <NavLink to="/available-cars">Available Cars</NavLink>
