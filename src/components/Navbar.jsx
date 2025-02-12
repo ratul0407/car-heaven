@@ -22,18 +22,23 @@ function Navbar() {
       <li>
         <Link to="/available-cars">Available Cars</Link>
       </li>
-      <li>
-        <Link to="/add-cars">Add Cars</Link>
-      </li>
-      <li>
-        <Link to="/my-cars">My Cars</Link>
-      </li>
-      <li>
-        <Link to="/my-bookings">My Bookings</Link>
-      </li>
-      <li>
-        <Link to="/manage-cars">Manage Cars</Link>
-      </li>
+      {user?.email && (
+        <>
+          {" "}
+          <li>
+            <Link to="/add-cars">Add Cars</Link>
+          </li>
+          <li>
+            <Link to="/my-cars">My Cars</Link>
+          </li>
+          <li>
+            <Link to="/my-bookings">My Bookings</Link>
+          </li>
+          <li>
+            <Link to="/manage-cars">Manage Cars</Link>
+          </li>{" "}
+        </>
+      )}
     </>
   );
   return (
@@ -79,6 +84,7 @@ function Navbar() {
           <>
             <img
               referrerPolicy="no-referrer"
+              alt="Profile Image"
               className="h-12 w-12 rounded-full border object-cover"
               src={user?.photoURL}
             ></img>

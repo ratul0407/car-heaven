@@ -1,19 +1,40 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { TfiViewListAlt } from "react-icons/tfi";
 import { MdGridView } from "react-icons/md";
 import GridCarCard from "../components/GridCarCard";
 import ListCarCard from "../components/ListCarCard";
 import { FaSearch } from "react-icons/fa";
+import { IoMenu } from "react-icons/io5";
 
 function AvailableCars() {
+  const sidebarRef = useRef(null);
   const [cars, setCars] = useState([]);
   const [gridView, setGridView] = useState(true);
   const [sortBy, setSortBy] = useState("");
   const [order, setOrder] = useState("");
   const [search, setSearch] = useState("");
   const [searchText, setSearchText] = useState("");
+  const [menuOpen, setMenuOpen] = useState(false);
   console.log(gridView);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    }
+
+    // Add event listener when navbar is open
+    if (menuOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [menuOpen]);
+  console.log(menuOpen);
   useEffect(() => {
     const fetchAllCars = async () => {
       const { data } = await axios.get(
@@ -33,8 +54,11 @@ function AvailableCars() {
 
   return (
     <div>
-      <div className="flex flex-col items-center justify-around gap-4 py-8 lg:flex-row">
+      <div className="flex flex-row items-center justify-center gap-4 py-8 lg:flex-row">
         {/* search field */}
+        <button className="lg:hidden" onClick={() => setMenuOpen(!menuOpen)}>
+          <IoMenu />
+        </button>
         <form onSubmit={handleSubmit}>
           <div className="flex items-center gap-2">
             <input
@@ -51,22 +75,8 @@ function AvailableCars() {
           </div>
         </form>
         <div className="flex gap-2">
-          {/* filter price */}
-          <div>
-            <select
-              onChange={(e) => {
-                setOrder(e.target.value);
-                setSortBy("price");
-              }}
-              className="rounded-lg p-2 shadow-xl outline-gray-300"
-            >
-              <option value="">Filter Price</option>
-              <option value="high">High</option>
-              <option value="low">Low</option>
-            </select>
-          </div>
           {/* filter date */}
-          <div>
+          {/* <div>
             <select
               onChange={(e) => {
                 setOrder(e.target.value);
@@ -78,13 +88,16 @@ function AvailableCars() {
               <option value="asc">Oldest</option>
               <option value="dsc">Newest</option>
             </select>
-          </div>
+          </div> */}
         </div>
       </div>
 
       {/* sidebar and products */}
-      <div className="flex w-full gap-8">
-        <div className="w-1/4 rounded-lg px-4 shadow-xl">
+      <div className="relative flex w-full gap-8 lg:items-start">
+        <div
+          ref={sidebarRef}
+          className={`absolute z-20 w-[50vw] bg-white transition-all duration-500 lg:w-1/4 ${menuOpen ? "translate-x-0" : "-translate-x-[100vw]"} rounded-lg px-4 shadow-xl lg:static lg:translate-x-0 lg:bg-inherit lg:py-12`}
+        >
           {/* toggle grid and list view
            */}
           <div className="flex items-center gap-4 border-b-2 py-4">
@@ -102,10 +115,88 @@ function AvailableCars() {
             </button>
           </div>
 
-          {/* Filter price */}
-          <div className="">
-            <h3>Filter Price</h3>
-            <input type="checkbox" />
+          {/* filter price */}
+          <div className="w-full space-y-2 border-b-2 py-4">
+            <p className="font-semibold">Filter Price</p>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-3">
+                <input
+                  type="radio"
+                  name="price"
+                  className="radio"
+                  defaultChecked
+                />
+                <p>Default</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  onChange={(e) => {
+                    setOrder(e.target.value);
+                    setSortBy("price");
+                  }}
+                  value="high"
+                  type="radio"
+                  name="price"
+                  className="radio"
+                />
+                <p>High</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  onChange={(e) => {
+                    setOrder(e.target.value);
+                    setSortBy("price");
+                  }}
+                  value="low"
+                  type="radio"
+                  name="price"
+                  className="radio"
+                />
+                <p>Low</p>
+              </div>
+            </div>
+          </div>
+
+          {/* filter date */}
+          <div className="w-full space-y-2 border-b-2 py-4">
+            <p className="font-semibold">Filter Date</p>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <input
+                  type="radio"
+                  name="date"
+                  className="radio"
+                  defaultChecked
+                />
+                <p>Default</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  onChange={(e) => {
+                    setOrder(e.target.value);
+                    setSortBy("date");
+                  }}
+                  value="asc"
+                  name="date"
+                  type="radio"
+                  className="radio"
+                />
+                <p>Newest</p>
+              </div>
+              <div className="flex items-center gap-2">
+                <input
+                  onChange={(e) => {
+                    setOrder(e.target.value);
+                    setSortBy("date");
+                  }}
+                  value="dsc"
+                  name="date"
+                  type="radio"
+                  className="radio"
+                />
+                <p>Oldest</p>
+              </div>
+            </div>
           </div>
         </div>
 

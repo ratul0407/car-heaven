@@ -9,7 +9,7 @@
     @apply rounded-lg bg-green-700 px-2 py-1 text-lg font-bold text-white sm:text-xl md:text-2xl lg:text-3xl;
   }
   .grid-view {
-    @apply grid items-center gap-4 md:grid-cols-2 lg:w-3/4 lg:grid-cols-2 2xl:grid-cols-4 2xl:gap-16;
+    @apply grid items-center gap-4 md:grid-cols-2 lg:w-3/4 lg:grid-cols-2 2xl:grid-cols-3 2xl:gap-16;
   }
   .list-view {
     @apply flex flex-col gap-8 lg:w-2/3;
