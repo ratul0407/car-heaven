@@ -13,6 +13,7 @@ function AvailableCars() {
   const [order, setOrder] = useState("");
   const [search, setSearch] = useState("");
   const [searchText, setSearchText] = useState("");
+  console.log(gridView);
   useEffect(() => {
     const fetchAllCars = async () => {
       const { data } = await axios.get(
@@ -33,16 +34,6 @@ function AvailableCars() {
   return (
     <div>
       <div className="flex flex-col items-center justify-around gap-4 py-8 lg:flex-row">
-        {/* toggle grid and list view
-         */}
-        <div
-          className="tooltip hidden md:block"
-          data-tip={gridView ? "List View" : "Grid View"}
-        >
-          <button onClick={() => setGridView(!gridView)}>
-            {gridView ? <TfiViewListAlt /> : <MdGridView size={18} />}
-          </button>
-        </div>
         {/* search field */}
         <form onSubmit={handleSubmit}>
           <div className="flex items-center gap-2">
@@ -92,9 +83,27 @@ function AvailableCars() {
       </div>
 
       {/* sidebar and products */}
-      <div className="flex w-full">
-        <div className="w-1/4">
-          <div className="bg-slate-300">
+      <div className="flex w-full gap-8">
+        <div className="w-1/4 rounded-lg px-4 shadow-xl">
+          {/* toggle grid and list view
+           */}
+          <div className="flex items-center gap-4 border-b-2 py-4">
+            <p className="font-semibold">View as</p>
+
+            <button onClick={() => setGridView(true)}>
+              <MdGridView
+                className={`${gridView && "text-slate-900"} h-8 w-8 border border-slate-300 p-1 text-slate-400`}
+              />
+            </button>
+            <button onClick={() => setGridView(false)}>
+              <TfiViewListAlt
+                className={`${!gridView && "text-slate-900"} h-8 w-8 border border-slate-300 p-1 text-slate-400`}
+              />
+            </button>
+          </div>
+
+          {/* Filter price */}
+          <div className="">
             <h3>Filter Price</h3>
             <input type="checkbox" />
           </div>
